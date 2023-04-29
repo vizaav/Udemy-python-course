@@ -43,3 +43,6 @@ for i in range(choices.__len__()):
     elif choices[i] == "symbol":
         password += random.choice(symbols)
 print("Hard level solution (using loops): " + password)
+
+len(letters)
+letters.__len__()
