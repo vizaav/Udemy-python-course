@@ -1,4 +1,5 @@
 import random
+
 print("Welcome to the Number Guessing Game!")
 print("I'm thinking of a number between 1 and 100.")
 answer = random.randint(1, 100)
@@ -10,6 +11,7 @@ if difficulty == 'easy':
     attempts = 10
 else:
     attempts = 5
+
 
 def compare(correct_answer, guessed_number):
     if correct_answer == guessed_number:
@@ -23,6 +25,7 @@ def compare(correct_answer, guessed_number):
         print("Too low.")
         print("Guess again.")
         return True
+
 
 looping = True
 
