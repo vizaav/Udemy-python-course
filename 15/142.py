@@ -8,17 +8,15 @@ resources = {
 
 
 class Drink:
-    def __init__(self, name, *ingredients, cost):
+    def __init__(self, name,  cost, **ingredients,):
         self.name = name
-        self.ingredients = {}
-        # for ingredient in ingredients:
-        #     self.ingredients[ingredient] = ingredients[ingredient]
+        self.ingredients = ingredients
         self.cost = cost
 
 
 drinks = []
 for drink in MENU:
-    drinks.append(Drink(drink, MENU[drink]["ingredients"], cost=float(MENU[drink]["cost"])))
+    drinks.append(Drink(drink,  cost=float(MENU[drink]["cost"]), **MENU[drink]["ingredients"]))
     print(drink, MENU[drink]["ingredients"], float(MENU[drink]["cost"]))
 
 coins = {"quarters": 0.25, "dimes": 0.10, "nickles": 0.05, "pennies": 0.01}
@@ -26,7 +24,7 @@ coins = {"quarters": 0.25, "dimes": 0.10, "nickles": 0.05, "pennies": 0.01}
 
 def check_resources(drink):
     for ingredient in drink.ingredients:
-        if resources[ingredient] < drink.ingredients[ingredient]:
+        if drink.ingredients[ingredient] > resources[ingredient]:
             print(f"Sorry, there is not enough {ingredient}.")
             return False
     return True
@@ -87,5 +85,3 @@ while looping:
                     resources[ingredient] -= drinks[2].ingredients[ingredient]
             else:
                 print("Sorry, that's not enough money. Money refunded.")
-
-
